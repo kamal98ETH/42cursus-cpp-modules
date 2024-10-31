@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 17:45:22 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/10/31 23:26:38 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2024/10/31 23:31:55 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ Zombie* zombieHorde(int N, std::string name)
 	for (int i = 0; i < N; i++)
 	{
 		zombies = new (zombies) Zombie(name);
-		zombies->announce();
 		zombies++;
 	}
 	zombies -= N;
