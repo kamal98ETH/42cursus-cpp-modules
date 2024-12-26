@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/04 14:15:43 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/12/24 15:36:59 by kez-zoub         ###   ########.fr       */
+/*   Created: 2024/12/17 18:59:28 by kez-zoub          #+#    #+#             */
+/*   Updated: 2024/12/19 15:50:28 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef MATERIASOURCE_HPP
+# define MATERIASOURCE_HPP
 
-int	main(int argc, char **argv)
+# include "IMateriaSource.hpp"
+
+class MateriaSource: public IMateriaSource
 {
-	int	i;
-	int	j;
+	public:
+		void learnMateria(AMateria*) override;
+		AMateria* createMateria(std::string const & type) override;
+};
 
-	for (i = 1; i < argc; i++)
-		for (j = 0; argv[i][j]; j++)
-			argv[i][j] = toupper(argv[i][j]);
-	for (i = 1; i < argc; i++)
-		std::cout << argv[i];
-	if (argc == 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-	std::cout << std::endl;
-	return (0);
-}
+#endif

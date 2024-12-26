@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 16:14:55 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/12/24 18:28:12 by kez-zoub         ###   ########.fr       */
+/*   Created: 2024/12/17 17:56:47 by kez-zoub          #+#    #+#             */
+/*   Updated: 2024/12/19 15:45:22 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef CHARACTER_HPP
+# define CHARACTER_HPP
 
-# include "Contact.hpp"
+# include "ICharacter.hpp"
 
-class PhoneBook
+class Character: public ICharacter
 {
 	private:
-		Contact	contacts[8];
+		std::string	name;
+		AMateria	*inventory[4];
 	public:
-		void	add(void);
-		void	search(void);
+		Character(void);
+		Character(std::string name);
+		~Character(void);
+		std::string const & getName(void) const override;
+		void equip(AMateria* m) override;
+		void unequip(int idx) override;
+		void use(int idx, ICharacter& target) override;
 };
 
 #endif

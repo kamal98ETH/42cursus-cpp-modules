@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/04 14:15:43 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/12/24 15:36:59 by kez-zoub         ###   ########.fr       */
+/*   Created: 2024/12/02 01:26:58 by kez-zoub          #+#    #+#             */
+/*   Updated: 2024/12/02 04:28:08 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef CAT_HPP
+# define CAT_HPP
 
-int	main(int argc, char **argv)
+# include "Animal.hpp"
+
+class Cat: public Animal
 {
-	int	i;
-	int	j;
+	public:
+		Cat(void);
+		Cat(const Cat &other);
+		Cat&	operator=(const Cat &other);
+		~Cat(void);
+		void	makeSound(void) const;
+};
 
-	for (i = 1; i < argc; i++)
-		for (j = 0; argv[i][j]; j++)
-			argv[i][j] = toupper(argv[i][j]);
-	for (i = 1; i < argc; i++)
-		std::cout << argv[i];
-	if (argc == 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-	std::cout << std::endl;
-	return (0);
-}
+#endif

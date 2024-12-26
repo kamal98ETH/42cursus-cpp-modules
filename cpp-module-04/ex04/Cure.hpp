@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/04 14:15:43 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/12/24 15:36:59 by kez-zoub         ###   ########.fr       */
+/*   Created: 2024/12/17 17:05:34 by kez-zoub          #+#    #+#             */
+/*   Updated: 2024/12/19 16:14:30 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef CURE_HPP
+# define CURE_HPP
 
-int	main(int argc, char **argv)
+# include "AMateria.hpp"
+
+class Cure: public AMateria
 {
-	int	i;
-	int	j;
+	public:
+		Cure(void);
+		~Cure(void);
+		Cure*	clone(void) const;
+		void use(ICharacter& target) override;
+};
 
-	for (i = 1; i < argc; i++)
-		for (j = 0; argv[i][j]; j++)
-			argv[i][j] = toupper(argv[i][j]);
-	for (i = 1; i < argc; i++)
-		std::cout << argv[i];
-	if (argc == 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-	std::cout << std::endl;
-	return (0);
-}
+#endif

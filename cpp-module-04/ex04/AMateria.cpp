@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/04 14:15:43 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/12/24 15:36:59 by kez-zoub         ###   ########.fr       */
+/*   Created: 2024/12/17 16:24:37 by kez-zoub          #+#    #+#             */
+/*   Updated: 2024/12/19 16:13:32 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "AMateria.hpp"
 
-int	main(int argc, char **argv)
+AMateria::AMateria(void)
 {
-	int	i;
-	int	j;
+	type = "AMateria";
+}
 
-	for (i = 1; i < argc; i++)
-		for (j = 0; argv[i][j]; j++)
-			argv[i][j] = toupper(argv[i][j]);
-	for (i = 1; i < argc; i++)
-		std::cout << argv[i];
-	if (argc == 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-	std::cout << std::endl;
-	return (0);
+AMateria::AMateria(std::string const & t)
+{
+	type = t;
+}
+
+std::string const & AMateria::getType() const
+{
+	return (type);
+}
+
+void AMateria::use(ICharacter& target)
+{
+	std::cout << "* used amateria action at " << target.getName() << " *" << std::endl;
 }

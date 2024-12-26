@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/04 14:15:43 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/12/24 15:36:59 by kez-zoub         ###   ########.fr       */
+/*   Created: 2024/12/02 04:30:47 by kez-zoub          #+#    #+#             */
+/*   Updated: 2024/12/02 08:56:12 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef WRONGCAT_HPP
+# define WRONGCAT_HPP
 
-int	main(int argc, char **argv)
+# include "WrongAnimal.hpp"
+
+class WrongCat: public WrongAnimal
 {
-	int	i;
-	int	j;
+	public:
+		WrongCat(void);
+		WrongCat(const WrongCat &other);
+		WrongCat&	operator=(const WrongCat &other);
+		~WrongCat(void);
+		void	makeSound(void) const;
+};
 
-	for (i = 1; i < argc; i++)
-		for (j = 0; argv[i][j]; j++)
-			argv[i][j] = toupper(argv[i][j]);
-	for (i = 1; i < argc; i++)
-		std::cout << argv[i];
-	if (argc == 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-	std::cout << std::endl;
-	return (0);
-}
+#endif

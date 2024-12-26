@@ -6,63 +6,35 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 16:16:05 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/09/24 19:03:44 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2024/12/26 12:49:43 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 
-# include "PhoneBook.hpp"
-
-using namespace std;
-
-void	print_limited_str(string str);
+# include <iostream>
+# include <sstream>
+# include <cstdlib>
 
 class Contact
 {
 	private:
-		string	first_name;
-		string	last_name;
-		string	nickname;
-		string	phone_number;
-		string	darkest_secret;
-
+		std::string	first_name;
+		std::string	last_name;
+		std::string	nickname;
+		std::string	phone_number;
+		std::string	darkest_secret;
 	public:
-		void	setContact(string first, string last,
-							string nick, string number,
-							string secret)
-		{
-			first_name = first;
-			last_name = last;
-			nickname = nick;
-			phone_number = number;
-			darkest_secret = secret;
-		}
-
-		void	printContactRow(int index)
-		{
-			stringstream	indexStream;
-			
-			indexStream << index;
-			print_limited_str(indexStream.str());
-			cout << "|";
-			print_limited_str(first_name);
-			cout << "|";
-			print_limited_str(last_name);
-			cout << "|";
-			print_limited_str(nickname);
-			cout << endl;
-		}
-
-		void	printContact(void)
-		{
-			cout << "First name      : " << first_name << endl;
-			cout << "Last name       : " << last_name << endl;
-			cout << "Nickname        : " << nickname << endl;
-			cout << "Phone number    : " << phone_number << endl;
-			cout << "Darkest sercret : " << darkest_secret << endl; 
-		}
+		void		setContact(std::string f, std::string l, std::string n, std::string p, std::string d);
+		std::string	getFirstName(void);
+		std::string	getLastName(void);
+		std::string	getNickname(void);
+		std::string	getPhoneNumber(void);
+		std::string	getDarkestSecrect(void);
+		void		copy(Contact contact);
+		void		printOneContact(int index);
+		void		printFullContact(void);
 };
 
 #endif
