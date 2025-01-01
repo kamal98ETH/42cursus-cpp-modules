@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 17:45:30 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/10/31 23:29:01 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/01/01 01:54:17 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ class Zombie
 private:
 	std::string	name;
 public:
-	Zombie(void);
-	Zombie(std::string name);
+	Zombie(void) : name("default") {};
+	Zombie(std::string name) : name(name) {};
 	~Zombie(void);
 	void	announce( void );
 };

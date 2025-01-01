@@ -1,16 +1,24 @@
 NAME = harlFilter
-CC	= g++
-CPPFLAGS=-Wall -Wextra -Werror -std=c++98
-SRC = main.cpp Harl.cpp 
-OBJ = $(SRC:.cpp=.o)
+
+COMPILER = c++
+
+FLAGS = -Wall -Wextra -Werror
+
+SRCS = main.cpp Harl.cpp
+
+OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-		$(CC) $(CPPFLAGS) -o $(NAME) $(OBJ)
+$(NAME): $(OBJS)
+		$(COMPILER) $(FLAGS) $(OBJS) -o $(NAME)
+
+.cpp.o:
+	$(COMPILER) $(FLAGS) -c $< -o $@
 
 clean:
-		rm -f $(OBJ) 
+	rm -f $(OBJS)
+
 fclean: clean
 		rm -f $(NAME)
 

@@ -6,13 +6,14 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 03:01:05 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/11/05 23:18:21 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/01/01 14:55:50 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
 
 std::string	findAndReplace(std::string original, std::string from, std::string to)
 {
@@ -29,35 +30,50 @@ std::string	findAndReplace(std::string original, std::string from, std::string t
 	return (newStr);
 }
 
-int	main(int argc, char **argv)
+std::string	readFile(char *filename)
 {
 	std::string		fileContent;
-	std::string		newContent;
 	char			one[1];
-	std::fstream	file(argv[1], std::ios::in | std::ios::out | std::ios::trunc);
+	std::ifstream	inFile(filename);
+
+	if (!inFile.is_open())
+	{
+		std::cerr << "\e[31mERROR: Can't open file\e[0m" << std::endl;
+		exit(1);
+	}
+	inFile.read(one, 1);
+	while (!inFile.eof())
+	{
+		fileContent += one;
+		inFile.read(one, 1);
+	}
+	inFile.close();
+	return (fileContent);
+}
+
+void	writeFile(char *filename, std::string newContent)
+{
+	std::ofstream	outFile(filename);
+
+	if (!outFile.is_open())
+	{
+		std::cerr << "\e[31mERROR: Can't open file\e[0m" << std::endl;
+		exit(1);
+	}
+	outFile << newContent;
+	outFile.close();
+}
+
+int	main(int argc, char **argv)
+{
+	std::string		newContent;
 
 	if (argc != 4)
 	{
-		std::cerr << "\e[31mWrong number of parameters\n\e[0m";
+		std::cerr << "\e[31mWrong number of parameters\e[0m" << std::endl;
 		return (1);
 	}
-
-	if (file.is_open())
-	{
-		file.read(one, 1);
-		while (!file.eof())
-		{
-			fileContent += one;
-			file.read(one, 1);
-		}
-		newContent = findAndReplace(fileContent, argv[2], argv[3]);
-		file << "newContent";
-		file.close();
-	}
-	else
-	{
-		std::cerr << "\e[31mFile doesn't exist\n\e[0m";
-		return (1);
-	}
+	newContent = findAndReplace(readFile(argv[1]), argv[2], argv[3]);
+	writeFile(argv[1], newContent);
 	return (0);
 }
