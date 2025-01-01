@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 16:16:05 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/12/26 12:49:43 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/01/01 21:39:47 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define CONTACT_HPP
 
 # include <iostream>
-# include <sstream>
 # include <cstdlib>
 
 class Contact
@@ -33,7 +32,7 @@ class Contact
 		std::string	getPhoneNumber(void);
 		std::string	getDarkestSecrect(void);
 		void		copy(Contact contact);
-		void		printOneContact(int index);
+		void		printOneContact(void);
 		void		printFullContact(void);
 };
 

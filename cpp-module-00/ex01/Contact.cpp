@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 16:02:30 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/12/26 00:59:23 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/01/01 20:52:47 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,8 @@ void	print_limited_str(std::string str)
 }
 
 
-void	Contact::printOneContact(int index)
+void	Contact::printOneContact(void)
 {
-	std::stringstream	ss;
-
-	ss << index;
-	print_limited_str(ss.str());
-	std::cout << "|";
 	print_limited_str(first_name);
 	std::cout << "|";
 	print_limited_str(last_name);

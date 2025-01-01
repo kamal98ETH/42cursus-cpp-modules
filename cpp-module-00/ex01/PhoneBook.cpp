@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 16:16:39 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/12/26 14:46:13 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/01/01 21:32:40 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void	PhoneBook::add(void)
 
 int valid_input_number(std::string str)
 {
-    std::stringstream	ss(str);
     int number;
 	int	i;
 
@@ -65,11 +64,15 @@ int valid_input_number(std::string str)
 	for (; str[i]; i++)
 		if (str[i] < '0' || str[i] > '9')
 			return (-1);
-    ss >> number;
+	i = 0;
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '0')
+		i++;
+	if (str.length() - i > 3)
+		return (-1);
+    number = std::atoi(str.c_str());
 	if (number >= 0 && number < 8)
 		return (number);
-	else
-		return (-1);
+	return (-1);
 }
 
 void	PhoneBook::search(void)
@@ -79,7 +82,8 @@ void	PhoneBook::search(void)
 	std::cout << "     index|first name| last name|  nickname" << std::endl;
 	for (int i = 0; i < 8; i++)
 	{
-		contacts[i].printOneContact(i);
+		std::cout << "         " << i << "|";
+		contacts[i].printOneContact();
 	}
 	index = valid_input_number(getValidStr("Enter index number of contact to be displayed..."));
 	while (index == -1)
