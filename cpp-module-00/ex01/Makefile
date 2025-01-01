@@ -2,7 +2,7 @@ NAME = phonebook
 
 COMPILER = c++
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = awesome_phonebook.cpp PhoneBook.cpp Contact.cpp
 

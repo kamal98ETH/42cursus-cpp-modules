@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 20:18:29 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/11/13 07:21:38 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/01/01 16:53:19 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,26 +50,17 @@ void	Harl::complain(void)
 {
 	switch (Harl::level)
 	{
-	case 0:
-		this->debug();
-		this->info();
-		this->warning();
-		this->error();
-		break;
-	case 1:
-		this->info();
-		this->warning();
-		this->error();
-		break;
-	case 2:
-		this->warning();
-		this->error();
-		break;
-	case 3:
-		this->error();
-		break;
-	default:
-		std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
-		break;
+		case 0:
+			this->debug();
+		case 1:
+			this->info();
+		case 2:
+			this->warning();
+		case 3:
+			this->error();
+			break;
+		default:
+			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+			break;
 	}
 }

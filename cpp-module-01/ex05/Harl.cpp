@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 23:20:05 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/11/07 20:22:44 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/01/01 18:57:41 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,12 @@ void	Harl::error(void)
 
 void	Harl::complain(std::string level)
 {
-	if (level != "debug" && level != "info" && level != "warning" && level != "error")
-		return ;
+	void (Harl::*func [])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+	std::string	levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	
-	std::map<std::string, void(Harl::*)()> funcArray;
-
-	funcArray["debug"] = &Harl::debug;
-	funcArray["info"] = &Harl::info;
-	funcArray["warning"] = &Harl::warning;
-	funcArray["error"] = &Harl::error;
-
-	(this->*funcArray[level])();
+	for (int i = 0; i < 4; i++)
+	{
+		if (level == levels[i])
+			(this->*func[i])();
+	}
 }
