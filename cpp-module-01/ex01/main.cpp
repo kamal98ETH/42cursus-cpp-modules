@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 17:45:57 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/10/31 23:32:42 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/01/02 00:11:18 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,9 @@ int	main(void)
 
 	N = 5;
 	Zombie	*zombies = zombieHorde(N, "zombie");
-	Zombie	*current = zombies;
 	for (int i = 0; i < N; i++)
 	{
-		current->announce();
-		current++;
+		zombies[i].announce();
 	}
 	delete[] zombies;
 	return (0);
