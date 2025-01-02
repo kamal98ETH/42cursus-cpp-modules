@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 00:15:54 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/01/01 16:26:57 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/01/02 00:43:57 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class HumanA
 		std::string	name;
 		Weapon		&weapon;
 	public:
-		HumanA(std::string name, Weapon& weapon) : name(name), weapon(weapon) {};
+		HumanA(std::string name, Weapon& weapon);
 		~HumanA(void);
 		void	attack(void);
 };

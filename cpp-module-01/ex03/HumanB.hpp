@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 00:18:35 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/11/03 02:56:03 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/01/02 01:30:57 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class HumanB
 		std::string	name;
 		Weapon		*weapon;
 	public:
-		HumanB(std::string name) : name(name) {}
+		HumanB(std::string name);
 		~HumanB(void);
 		void	setWeapon(Weapon& weapon);
 		void	attack(void);

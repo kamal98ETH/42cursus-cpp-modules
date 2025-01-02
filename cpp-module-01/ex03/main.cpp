@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 00:14:26 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/11/03 02:56:31 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/01/02 01:26:06 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int main()
 	{
 		Weapon club = Weapon("crude spiked club");
 		HumanB jim("Jim");
-		std::cout << "Address of the actual weapon: " << &club << std::endl;
 		jim.setWeapon(club);
 		jim.attack();
 		club.setType("some other type of club");
