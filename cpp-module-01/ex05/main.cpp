@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 23:19:36 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/11/07 19:48:22 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/01/02 01:59:21 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ int	main()
 {
 	Harl	karen;
 
-	karen.complain("debug");
-	karen.complain("info");
-	karen.complain("warning");
-	karen.complain("error");
+	karen.complain("DEBUG");
+	karen.complain("INFO");
+	karen.complain("WARNING");
+	karen.complain("ERROR");
 	karen.complain("test");
 	
 	return (0);
