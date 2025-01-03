@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 17:45:22 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/01/02 00:28:12 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/01/03 15:43:20 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ Zombie* zombieHorde(int N, std::string name)
 {
 	Zombie*	zombies = new (std::nothrow) Zombie[N];
 
-	if (zombies == nullptr)
+	if (!zombies)
 	{
 		std::cerr << "Heap allocation failed" << std::endl;
 		exit(1);

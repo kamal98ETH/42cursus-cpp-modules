@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 23:19:52 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/11/07 20:25:01 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/01/03 15:47:27 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define HARL_HPP
 
 # include <iostream>
-# include <functional>
-# include <map>
 
 class Harl
 {

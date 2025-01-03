@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 03:01:05 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/01/01 16:42:28 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/01/03 15:45:09 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ std::string	readFile(char *filename)
 
 void	writeFile(char *filename, std::string newContent)
 {
-	std::ofstream	outFile(std::string(filename) + ".replace");
+	std::string		newFilename = std::string(filename) + ".replace";
+	std::ofstream	outFile(newFilename.c_str());
 
 	if (!outFile.is_open())
 	{
