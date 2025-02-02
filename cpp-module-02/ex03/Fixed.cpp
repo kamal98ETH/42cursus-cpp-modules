@@ -5,36 +5,44 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/16 20:13:41 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/11/17 04:29:16 by kez-zoub         ###   ########.fr       */
+/*   Created: 2024/11/15 02:56:44 by kez-zoub          #+#    #+#             */
+/*   Updated: 2025/02/02 14:35:13 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
+const int	Fixed::_fracBits = 8;
+
 Fixed::Fixed(void)
 {
-	this->number = 0;
+	// std::cout << "Default constructor called" << std::endl;
+	_value = 0;
 }
 
 Fixed::Fixed(const int intNum)
 {
-	this->number = intNum << this->numFractBits;
+	// std::cout << "Int constructor called" << std::endl;
+	_value = intNum << _fracBits;
 }
 
 Fixed::Fixed(const float floatNum)
 {
-	this->number = (int)(floatNum * (1 << this->numFractBits) + (floatNum >= 0 ? 0.5 : -0.5));
+	// std::cout << "Float constructor called" << std::endl;
+	_value = (int)(roundf(floatNum * (1 << _fracBits)));
 }
 
 Fixed::Fixed(const Fixed& other)
 {
-	*this = other;
+	// std::cout << "Copy constructor called" << std::endl;
+	_value = other._value;
 }
 
 Fixed& Fixed::operator=(const Fixed& other)
 {
-	number = other.number;
+	// std::cout << "Copy assignment operator called" << std::endl;
+	if (this != &other)
+		_value = other._value;
 	return *this;
 }
 
@@ -45,26 +53,27 @@ Fixed::~Fixed(void)
 
 int		Fixed::getRawBits( void ) const
 {
-	return (this->number);
+	// std::cout << "getRawBits member function called" << std::endl;
+	return (_value);
 }
 
 void	Fixed::setRawBits( int const raw )
 {
-	this->number = raw;
+	// std::cout << "setRawBits member function called" << std::endl;
+	_value = raw;
 }
 
 int	Fixed::toInt( void ) const
 {
-	return (this->number >> this->numFractBits);
+	return (_value >> _fracBits);
 }
 
 float	Fixed::toFloat( void ) const
 {
-	return ((float)this->number / (1 << this->numFractBits));
+	return ((float)_value / (1 << _fracBits));
 }
 
-// for cout
-std::ostream & operator << (std::ostream &out, const Fixed &fixed)
+std::ostream& operator<<(std::ostream &out, const Fixed &fixed)
 {
     out << fixed.toFloat();
     return out;
@@ -73,32 +82,32 @@ std::ostream & operator << (std::ostream &out, const Fixed &fixed)
 // The 6 comparison operators
 bool	Fixed::operator>(const Fixed& other) const
 {
-	return (this->number > other.number);
+	return (_value > other._value);
 }
 
 bool	Fixed::operator<(const Fixed& other) const
 {
-	return (this->number < other.number);
+	return (_value < other._value);
 }
 
 bool	Fixed::operator>=(const Fixed& other) const
 {
-	return (this->number >= other.number);
+	return (_value >= other._value);
 }
 
 bool	Fixed::operator<=(const Fixed& other) const
 {
-	return (this->number <= other.number);
+	return (_value <= other._value);
 }
 
 bool	Fixed::operator==(const Fixed& other) const
 {
-	return (this->number == other.number);
+	return (_value == other._value);
 }
 
 bool	Fixed::operator!=(const Fixed& other) const
 {
-	return (this->number != other.number);
+	return (_value != other._value);
 }
 
 // The 4 arithmetic operators
@@ -106,7 +115,7 @@ Fixed	Fixed::operator+(const Fixed &other)
 {
 	Fixed	result;
 	
-	result.setRawBits(this->number + other.number);
+	result.setRawBits(_value + other._value);
 	return result;
 }
 
@@ -114,7 +123,7 @@ Fixed	Fixed::operator-(const Fixed &other)
 {
 	Fixed	result;
 	
-	result.setRawBits(this->number - other.number);
+	result.setRawBits(_value - other._value);
 	return result;
 }
 
@@ -122,8 +131,7 @@ Fixed	Fixed::operator*(const Fixed &other)
 {
 	Fixed	result;
 
-	long long	res = (long long)this->number * (long long)other.number;
-	result.setRawBits((int)(res >> this->numFractBits));
+	result.setRawBits((long long)_value * other._value >> _fracBits);
 	return result;
 }
 
@@ -131,34 +139,34 @@ Fixed	Fixed::operator/(const Fixed &other)
 {
 	Fixed	result;
 
-	result.setRawBits(((this->number << this->numFractBits) / other.number));
+	result.setRawBits(((long long)_value << _fracBits) / other._value);
 	return result;
 }
 
 // The 4 increment/decrement
 Fixed&	Fixed::operator++(void)
 {
-	this->number++;
+	_value++;
 	return (*this);
 }
 
 Fixed	Fixed::operator++(int)
 {
 	Fixed	tmp = *this;
-	this->number++;
+	_value++;
 	return (tmp);
 }
 
 Fixed&	Fixed::operator--(void)
 {
-	this->number--;
+	_value--;
 	return (*this);
 }
 
 Fixed	Fixed::operator--(int)
 {
 	Fixed	tmp = *this;
-	this->number--;
+	_value--;
 	return (tmp);
 }
 
@@ -170,11 +178,11 @@ Fixed&	Fixed::min(Fixed& a, Fixed& b)
 	return (b);
 }
 
-Fixed&	Fixed::min(const Fixed& a, const Fixed& b)
+const Fixed&	Fixed::min(const Fixed& a, const Fixed& b)
 {
 	if (a <= b)
-		return ((Fixed &)a);
-	return ((Fixed &)b);
+		return (a);
+	return (b);
 }
 
 Fixed&	Fixed::max(Fixed& a, Fixed& b)
@@ -184,9 +192,9 @@ Fixed&	Fixed::max(Fixed& a, Fixed& b)
 	return (b);
 }
 
-Fixed&	Fixed::max(const Fixed& a, const Fixed& b)
+const Fixed&	Fixed::max(const Fixed& a, const Fixed& b)
 {
 	if (a >= b)
-		return ((Fixed &)a);
-	return ((Fixed &)b);
+		return (a);
+	return (b);
 }

@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 20:13:44 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/11/17 04:21:33 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/02/02 03:56:47 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ private:
 	Fixed	x;
 	Fixed	y;
 public:
-	Point(void);  // Default constructor
-	Point(const float X, const float Y);  // secondary constructor
-	Point(const Point& other);  // Copy constructor
-	Point& operator=(const Point& other);  // Assignment operator
-	~Point(void);  // Destructor
+	Point(void);
+	Point(const float X, const float Y);
+	Point(const Point& other);
+	Point& operator=(const Point& other);
+	~Point(void);
 	Fixed	getX(void) const;
 	Fixed	getY(void) const;
 };

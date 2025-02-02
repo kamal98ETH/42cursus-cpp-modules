@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 07:27:02 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/11/14 20:48:54 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/01/30 01:26:40 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 class Fixed
 {
 	private:
-		int					number;
-		static const int	numFractBits = 8;	
+		int					_value;
+		static const int	_fracBits;
 	public:
-		Fixed(void);  // Default constructor
-		Fixed(const Fixed& other);  // Copy constructor
-		Fixed& operator=(const Fixed& other);  // Assignment operator
-		~Fixed(void);  // Destructor
+		Fixed(void);
+		Fixed(const Fixed& other);
+		Fixed& operator=(const Fixed& other);
+		~Fixed(void);
 		int		getRawBits( void ) const;
 		void	setRawBits( int const raw );
 };

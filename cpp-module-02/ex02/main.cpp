@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 02:56:50 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/11/16 02:24:27 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/02/03 00:39:00 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,5 @@ int main( void )
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;
 	std::cout << Fixed::max( a, b ) << std::endl;
-
-	Fixed x(1), y(100);
-	Fixed	z = x / y;
-	std::cout << "div : " << z << std::endl;
-	return 0;
+	return (0);
 }
