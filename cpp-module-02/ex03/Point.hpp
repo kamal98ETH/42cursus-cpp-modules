@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 20:13:44 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/02/02 03:56:47 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/02/04 00:55:28 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 class Point
 {
 private:
-	Fixed	x;
-	Fixed	y;
+	Fixed	_x;
+	Fixed	_y;
 public:
 	Point(void);
 	Point(const float X, const float Y);

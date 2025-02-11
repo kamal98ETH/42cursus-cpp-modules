@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 22:32:27 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/11/30 21:55:20 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/02/11 00:11:30 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ class FragTrap : virtual public ClapTrap
 public:
 	FragTrap(void);
 	FragTrap(std::string name);
+	FragTrap(const FragTrap& other);
+	FragTrap&	operator=(const FragTrap& other);
 	~FragTrap(void);
-	void	attack(const std::string& target);
-	void	takeDamage(unsigned int amount);
-	void	beRepaired(unsigned int amount);
+	
 	void	highFivesGuys(void);
 };
 
