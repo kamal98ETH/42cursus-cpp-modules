@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 20:13:46 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/02/04 00:57:40 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/02/24 23:43:55 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,7 @@ Point& Point::operator=(const Point& other)
 	return *this;
 }
 
-Point::~Point(void)
-{
-	// std::cout << "Destructor called" << std::endl;
-}
+Point::~Point(void) {}
 
 Fixed	Point::getX(void) const
 {

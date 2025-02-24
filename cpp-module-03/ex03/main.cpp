@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:02:04 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/02/11 03:52:49 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/02/24 23:42:26 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	main(void)
 	named.beRepaired(30);
 		
 	// check if the dead object can attack or heal
-	std::cout << " -> named attacks and repears after death\n";
+	std::cout << " -> default attacks and repears after death\n";
 	dflt.attack("3ntr");
 	dflt.beRepaired(30);
 	
