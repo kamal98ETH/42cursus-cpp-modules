@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 20:13:35 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/11/17 06:07:39 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/02/24 22:44:02 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int	main(void)
 	Point	b(-3, -2);
 	Point	c(4, -1);
 	Point	x(-1.21, 1.61);
-	// test with : https://www.geogebra.org/
-	std::cout << bsp(a, b, c, x) << std::endl;
+	Point	y(-1.21, 1.6);
+	std::cout << "For point (-1.21, 1.61) : " << bsp(a, b, c, x) << std::endl;
+	std::cout << "For point (-1.21, 1.6)  : " << bsp(a, b, c, y) << std::endl;
 	return (0);
 }
