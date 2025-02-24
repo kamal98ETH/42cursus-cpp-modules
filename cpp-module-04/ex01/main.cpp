@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 00:40:04 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/12/16 17:16:11 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/02/13 23:04:02 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 int	main(void)
 {
-	unsigned int	ANIMALSNUM = 10;
+	int	ANIMALSNUM = 10;
 	Animal*	animals[ANIMALSNUM];
 
 	int	i = 0;
@@ -30,14 +30,18 @@ int	main(void)
 		animals[i] = new Dog();
 		i++;
 	}
+
+	for (int i = 0; i < ANIMALSNUM; i++)
+	{
+		std::cout << " -> Animal number " << i << " :" << std::endl;
+		std::cout << "	Is type of a " << animals[i]->getType() << ", and it sounds like ";
+		animals[i]->makeSound(); 
+	}
 	
 	for (int i = 0; i < ANIMALSNUM; i++)
 	{
 		delete animals[i];
 	}
-
-	// A copy of a Dog or a Cat mustn’t be shallow. Thus, you have to test that your copies are deep copies!
-
 	
 	return (0);
 }

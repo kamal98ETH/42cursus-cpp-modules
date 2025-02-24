@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 08:36:45 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/12/02 09:17:08 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/02/11 22:34:23 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,14 @@ WrongAnimal::WrongAnimal(void) : type("WrongAnimal")
 WrongAnimal::WrongAnimal(const WrongAnimal &other)
 {
 	std::cout << "Copy constructor of WrongAnimal is called" << std::endl;
+	type = other.type;
 }
 
 WrongAnimal&	WrongAnimal::operator=(const WrongAnimal &other)
 {
 	std::cout << "Copy assignment operator of WrongAnimal is called" << std::endl;
+	if (this != &other)
+		type = other.type;
 	return (*this);
 }
 

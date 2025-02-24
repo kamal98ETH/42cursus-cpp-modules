@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 20:39:55 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/12/16 16:29:50 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/02/13 17:42:16 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ class Brain
 		std::string	ideas[100];
 	public:
 		Brain(void);
+		Brain(const Brain& other);
+		Brain&	operator=(const Brain& other);
 		~Brain(void);
 };
 

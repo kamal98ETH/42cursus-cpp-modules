@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Character.hpp                                      :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/17 17:56:47 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/12/19 15:45:22 by kez-zoub         ###   ########.fr       */
+/*   Created: 2024/12/17 18:59:28 by kez-zoub          #+#    #+#             */
+/*   Updated: 2025/02/22 21:01:00 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHARACTER_HPP
-# define CHARACTER_HPP
+#ifndef MATERIASOURCE_HPP
+# define MATERIASOURCE_HPP
 
-# include "ICharacter.hpp"
+# include "IMateriaSource.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
 
-class Character: public ICharacter
+class MateriaSource: public IMateriaSource
 {
 	private:
-		std::string	name;
-		AMateria	*inventory[4];
+		AMateria	*templates[4];
 	public:
-		Character(void);
-		Character(std::string name);
-		~Character(void);
-		std::string const & getName(void) const override;
-		void equip(AMateria* m) override;
-		void unequip(int idx) override;
-		void use(int idx, ICharacter& target) override;
+		MateriaSource(void);
+		MateriaSource(const MateriaSource& other);
+		MateriaSource&	operator=(const MateriaSource& other);
+		~MateriaSource(void);
+
+		void learnMateria(AMateria*);
+		AMateria* createMateria(std::string const & type);
 };
 
 #endif

@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   MateriaSource.cpp                                  :+:      :+:    :+:   */
+/*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/17 18:59:19 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/12/17 19:04:37 by kez-zoub         ###   ########.fr       */
+/*   Created: 2024/12/17 17:05:34 by kez-zoub          #+#    #+#             */
+/*   Updated: 2025/02/23 00:51:18 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MateriaSource.hpp"
+#ifndef CURE_HPP
+# define CURE_HPP
 
-void MateriaSource::learnMateria(AMateria*)
+# include "AMateria.hpp"
+
+class Cure: public AMateria
 {
+	public:
+		Cure(void);
+		Cure(const Cure& other);
+		Cure&	operator=(const Cure& other);
+		~Cure(void);
+		
+		AMateria* clone() const;
+		void use(ICharacter& target);
+};
 
-}
-
-AMateria* MateriaSource::createMateria(std::string const & type)
-{
-
-}
+#endif

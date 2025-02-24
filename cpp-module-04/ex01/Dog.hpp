@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 01:06:31 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/12/02 20:45:14 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/02/13 18:24:50 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,13 @@
 class Dog: public Animal
 {
 	private:
-		Brain	*brain;
+		Brain*	brain;
 	public:
 		Dog(void);
 		Dog(const Dog &other);
 		Dog&	operator=(const Dog &other);
 		~Dog(void);
+		
 		void	makeSound(void) const;
 };
 

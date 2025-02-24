@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 01:26:58 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/12/02 04:28:08 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/02/12 03:08:46 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ class Cat: public Animal
 		Cat(const Cat &other);
 		Cat&	operator=(const Cat &other);
 		~Cat(void);
+		
 		void	makeSound(void) const;
 };
 

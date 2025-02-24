@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.hpp                                            :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/17 16:48:25 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/12/19 16:31:28 by kez-zoub         ###   ########.fr       */
+/*   Created: 2024/12/02 08:36:27 by kez-zoub          #+#    #+#             */
+/*   Updated: 2025/02/12 02:52:59 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICE_HPP
-# define ICE_HPP
+#ifndef WRONGANIMAL_HPP
+# define WRONGANIMAL_HPP
 
-# include "AMateria.hpp"
+# include <iostream>
 
-class Ice: public AMateria
+class WrongAnimal
 {
+	protected:
+		std::string	type;
 	public:
-		Ice(void);
-		~Ice(void);
-		Ice*	clone(void) const;
-		void use(ICharacter& target) override;
+		WrongAnimal(void);
+		WrongAnimal(const WrongAnimal &other);
+		WrongAnimal&	operator=(const WrongAnimal &other);
+		virtual ~WrongAnimal(void);
+		
+		std::string		getType(void) const;
+		virtual void	makeSound(void) const;
 };
 
 #endif

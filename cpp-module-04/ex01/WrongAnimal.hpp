@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 08:36:27 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/12/02 09:17:54 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/02/12 02:52:59 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class WrongAnimal
 		WrongAnimal(const WrongAnimal &other);
 		WrongAnimal&	operator=(const WrongAnimal &other);
 		virtual ~WrongAnimal(void);
+		
 		std::string		getType(void) const;
 		virtual void	makeSound(void) const;
 };

@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 01:01:12 by kez-zoub          #+#    #+#             */
-/*   Updated: 2024/12/17 16:00:09 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/02/14 02:53:49 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ class Animal
 		Animal(void);
 		Animal(const Animal &other);
 		Animal&	operator=(const Animal &other);
-		~Animal(void);
+		virtual ~Animal(void);
+		
 		std::string		getType(void) const;
 		virtual void	makeSound(void) const = 0;
 };
