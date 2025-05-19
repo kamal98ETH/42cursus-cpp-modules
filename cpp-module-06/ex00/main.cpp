@@ -1,0 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/13 20:19:20 by kez-zoub          #+#    #+#             */
+/*   Updated: 2025/05/14 00:39:22 by kez-zoub         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ScalarConverter.hpp"
+
+int	main(int argc, char** argv)
+{
+	if (argc != 2)
+	{
+		std::cerr << "Invalid number of args" << std::endl;
+		return (1);
+	}
+	ScalarConverter::convert(argv[1]);
+}
