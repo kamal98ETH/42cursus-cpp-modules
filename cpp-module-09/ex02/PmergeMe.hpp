@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 23:51:19 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/06/16 23:12:45 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/06/19 02:17:10 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,21 @@
 # define PMERGEME_HPP
 
 # include <iostream>
+# include <cstdlib>
+# include <sys/time.h>
 # include <vector>
-
-typedef struct s_pair
-{
-	int	a;
-	int	b;
-}	t_pair;
+# include <deque>
 
 class PmergeMe
 {
-	private:
-		/* data */
 	public:
 		PmergeMe(void);
 		~PmergeMe(void);
+
+		void	vec_sort(std::vector<int> &vec);
+		void	deq_sort(std::deque<int> &deq);
 };
 
-void	vec_sort(std::vector<int> &vec);
+
 
 #endif
