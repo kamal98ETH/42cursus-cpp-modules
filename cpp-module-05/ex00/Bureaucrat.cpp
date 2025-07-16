@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 00:23:54 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/03/06 16:17:11 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/07/15 23:40:50 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& other)
 	if (this != &other)
 	{
 		this->~Bureaucrat();
-		new (this) Bureaucrat(other);
+		new (this) Bureaucrat(other); // investigate this more (changing const vars is ok???)
 	}
 	return (*this);
 }

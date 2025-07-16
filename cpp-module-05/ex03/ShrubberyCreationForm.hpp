@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 06:20:32 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/03/22 07:01:05 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/07/16 01:17:12 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class ShrubberyCreationForm : public AForm
 		~ShrubberyCreationForm(void);
 		
 		void	action(void) const;
-		virtual void	execute(Bureaucrat const & executor) const;
+		void	execute(Bureaucrat const & executor) const;
 };
 
 #endif

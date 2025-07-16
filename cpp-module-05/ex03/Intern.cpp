@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 01:48:26 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/03/27 06:17:25 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/07/16 02:12:14 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,8 @@ AForm*	Intern::makeForm(std::string formName, std::string formTarget)
 {
 	std::string forms[3] = {"shrubberycreation", "robotomyrequest", "presidentialpardon"};
 	int	i = 0;
-	while (i < 3)
-	{
-		if (strMatch(forms[i], formName))
-			break ;
+	while (i < 3 && !strMatch(forms[i], formName))
 		i++;
-	}
 	switch (i)
 	{
 		case 0:

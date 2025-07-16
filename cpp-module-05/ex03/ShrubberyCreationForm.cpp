@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 06:19:54 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/03/22 07:01:40 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/07/16 01:09:15 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ std::string	asciiTree(void)
 	return (str);
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(void) : AForm("Default", 145, 137), target("Default") {}
+ShrubberyCreationForm::ShrubberyCreationForm(void) : AForm("ShrubberyCreation", 145, 137), target("Default") {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm(target, 145, 137), target(target) {}
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreation", 145, 137), target(target) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm(other)
 {

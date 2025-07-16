@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 00:23:54 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/03/25 03:09:06 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/07/16 01:41:29 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,14 +107,6 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 
 void	Bureaucrat::executeForm(AForm const & form)
 {
-	try
-	{
-		form.execute(*this);
-		std::cout << _name << " executed " << form.getName() << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	
+	form.execute(*this);
+	std::cout << _name << " executed " << form.getName() << std::endl;
 }

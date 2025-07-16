@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 03:46:24 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/03/22 07:08:07 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/07/16 01:29:01 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 AForm::AForm(void) : _name("default"), _signed(false), _signGrade(150), _execGrade(150) {}
 
-AForm::AForm(const std::string& name, int signGrade, int execGrade) : _name(name), _signGrade(signGrade), _execGrade(execGrade)
+AForm::AForm(const std::string& name, int signGrade, int execGrade) : _name(name), _signed(false), _signGrade(signGrade), _execGrade(execGrade)
 {
 	if (signGrade > 150 || execGrade > 150)
 		throw AForm::GradeTooLowException();

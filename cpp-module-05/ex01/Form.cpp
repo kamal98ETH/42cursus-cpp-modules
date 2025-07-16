@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 03:46:24 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/03/06 15:28:34 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/07/16 01:28:49 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Form::Form(void) : _name("default"), _signed(false), _signGrade(150), _execGrade(150) {}
 
-Form::Form(const std::string& name, int signGrade, int execGrade) : _name(name), _signGrade(signGrade), _execGrade(execGrade)
+Form::Form(const std::string& name, int signGrade, int execGrade) : _name(name), _signed(false), _signGrade(signGrade), _execGrade(execGrade)
 {
 	if (signGrade > 150 || execGrade > 150)
 		throw Form::GradeTooLowException();
@@ -29,7 +29,7 @@ Form&	Form::operator=(const Form& other)
 	if (this != &other)
 	{
 		this->~Form();
-		new (this) Form(other);
+		new (this) Form(other); // investigate
 	}
 	return (*this);
 }

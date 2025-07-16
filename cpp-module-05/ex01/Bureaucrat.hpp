@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 00:23:35 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/03/06 00:45:29 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/07/15 23:52:16 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ class Bureaucrat
 		class GradeTooHighException : public std::exception
 		{
 			public:
-				virtual const char * what() const throw();
+				const char * what() const throw();
 		};
 		class GradeTooLowException : public std::exception
 		{
 			public:
-				virtual const char * what() const throw();
+				const char * what() const throw();
 		};
 };
 
