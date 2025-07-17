@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 20:19:20 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/05/14 00:39:22 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/07/17 16:31:15 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,6 @@ int	main(int argc, char** argv)
 		return (1);
 	}
 	ScalarConverter::convert(argv[1]);
+
+	return (0);
 }

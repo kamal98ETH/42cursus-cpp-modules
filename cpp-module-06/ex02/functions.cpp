@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 03:18:42 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/05/19 03:19:55 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/07/17 22:11:52 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,8 @@ Base*	generate(void)
 		return (new A());
 	else if (chance == 1)
 		return (new B());
-	else if (chance == 2)
-		return (new C());
 	else
-		return (NULL);
+		return (new C());
 }
 
 void	identify(Base* p)
@@ -34,6 +32,8 @@ void	identify(Base* p)
 		std::cout << "This is an object of type B" << std::endl;
 	else if (dynamic_cast<C*>(p))
 		std::cout << "This is an object of type C" << std::endl;
+	else
+		std::cout << "Unknown type" << std::endl;
 }
 
 void	identify(Base& p)
@@ -59,7 +59,7 @@ void	identify(Base& p)
 			}
 			catch(const std::exception& e)
 			{
-				std::cerr << e.what() << '\n';
+				std::cout << "Unknown type" << std::endl;
 			}
 		}
 	}

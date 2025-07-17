@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 01:24:35 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/05/15 23:56:47 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/07/17 21:32:09 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Serializer
 		Serializer(void);
 		Serializer(const Serializer& other);
 		Serializer&	operator=(const Serializer& other);
-		~Serializer(void) {};
+		~Serializer(void);
 	public:
 		static uintptr_t	serialize(Data* ptr);
 		static Data*	deserialize(uintptr_t raw);
