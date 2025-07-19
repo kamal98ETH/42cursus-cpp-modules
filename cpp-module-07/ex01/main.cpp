@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 21:01:59 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/05/19 23:18:34 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/07/18 15:34:49 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	increment(int &element)
 	element++;
 }
 
-void	print_int(int element)
+void	print_int(int &element)
 {
 	std::cout << element << ", ";
 }
@@ -27,7 +27,7 @@ void	add_suffix(std::string &element)
 	element += "_sifix";
 }
 
-void	print_str(std::string element)
+void	print_str(std::string &element)
 {
 	std::cout << element << ", ";
 }

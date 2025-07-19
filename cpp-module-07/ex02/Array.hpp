@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 02:02:11 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/05/20 15:56:28 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/07/18 16:30:24 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # include <iostream>
 # include <exception>
 
-template <typename T> class Array
+template <typename T>
+class Array
 {
 	private:
 		T			*arr;
@@ -69,7 +70,6 @@ template <typename T> class Array
 			return (arr[index]);
 		};
 
-		// should this be?
 		const T&	operator[](std::size_t index) const
 		{
 			if (index >= len)
