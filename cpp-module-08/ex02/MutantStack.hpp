@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 19:48:55 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/05/24 04:02:57 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/07/30 03:10:50 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,46 +20,18 @@
 template <typename T, typename Container = std::deque<T> >
 class MutantStack: public std::stack<T, Container>
 {
-	// private:
-	// 	/* data */
 	public:
+		MutantStack(void);
+		MutantStack(const MutantStack& other);
+		MutantStack&	operator=(const MutantStack& other);
+		~MutantStack(void);	
+
 		typedef typename Container::iterator iterator;
-
-		// MutantStack(void);
-		// ~MutantStack(void);
-
-		iterator	begin();
-		iterator	end();
-		// class iterator
-		// {
-		// 	private:
-		// 		/* data */
-		// 	public:
-		// 		iterator();
-		// 		~iterator();
-
-		// 		// The 6 comparison operators
-		// 		bool	operator>(const iterator& other) const;
-		// 		bool	operator<(const iterator& other) const;
-		// 		bool	operator>=(const iterator& other) const;
-		// 		bool	operator<=(const iterator& other) const;
-		// 		bool	operator==(const iterator& other) const;
-		// 		bool	operator!=(const iterator& other) const;
-		// 		// The 4 arithmetic operators
-		// 		iterator	operator+(const iterator& other);
-		// 		iterator	operator-(const iterator& other);
-		// 		iterator	operator*(const iterator& other);
-		// 		iterator	operator/(const iterator& other);
-				
-		// 		iterator	&operator++(void);
-		// 		iterator	operator++(int);
-		// 		iterator	&operator--(void);
-		// 		iterator	operator--(int);
-
-		// 		T& operator*() const;
-		// };
-		// MutantStack::iterator	begin(void);
-		// MutantStack::iterator	end(void);
+		typedef typename Container::const_iterator const_iterator;
+		iterator		begin();
+		const_iterator	begin() const;
+		iterator		end();
+		const_iterator	end() const;
 };
 
 #include "MutantStack.tpp"
