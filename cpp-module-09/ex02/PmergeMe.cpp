@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 23:51:15 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/06/19 02:26:10 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/08/03 16:30:35 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,26 +27,21 @@ void	print_vec(std::vector<int> vec, bool nl)
 		std::cout << std::endl;
 }
 
-void	print_vec_vec(std::vector<std::vector<int> > vec)
+PmergeMe::PmergeMe(void) {}
+
+PmergeMe::PmergeMe(const PmergeMe& other)
 {
-	std::cout << "[ ";
-	for (std::vector<std::vector<int> >::iterator it = vec.begin(); it != vec.end(); it++)
-	{
-		print_vec(*it, false);
-		if (it != vec.end() -1)
-			std::cout << ", ";
-	}
-	std::cout << " ]";
-	std::cout << std::endl;
+	(void)other;
 }
 
-PmergeMe::PmergeMe(void)
+PmergeMe&	PmergeMe::operator=(const PmergeMe& other)
 {
+	(void)other;
+	return (*this);
 }
 
-PmergeMe::~PmergeMe(void)
-{
-}
+
+PmergeMe::~PmergeMe(void){}
 
 std::vector<int>	get_Jacobsthal_batches_vec(int m)
 {
@@ -66,141 +61,109 @@ std::vector<int>	get_Jacobsthal_batches_vec(int m)
 	return (batches);
 }
 
-int	binary_insert(const std::vector<int> &vec, int left, int right, int value)
+void	insert_batches(std::vector<int> &main, std::vector<int> &pend)
 {
-	while (left <= right)
-	{
-		int	mid = left + (right - left) /2;
-		if (value == vec[mid])
-			return (mid);
-		else if (value > vec[mid])
-			left = mid +1;
-		else
-			right = mid -1;
-	}
-	return (left);
-}
-
-int	binary_insert(const std::vector<std::vector<int> > &vec, int left, int right, int value)
-{
-	while (left <= right)
-	{
-		int	mid = left + (right - left) /2;
-		if (value == vec[mid][0])
-			return (mid);
-		else if (value > vec[mid][0])
-			left = mid +1;
-		else
-			right = mid -1;
-	}
-	return (left);
-}
-
-void	insert_batches(std::vector<int> &main, std::vector<std::vector<int> > &pairs)
-{
-	std::vector<int>	batches = get_Jacobsthal_batches_vec(pairs.size());
+	std::vector<int>	batches = get_Jacobsthal_batches_vec(pend.size() -1);
+	std::vector<int>::iterator	it_pend = pend.begin() +1;
 	for (std::vector<int>::iterator it = batches.begin(); it != batches.end(); it++)
 	{
-		std::vector<std::vector<int> >	pairs_batch(pairs.begin(), pairs.begin() + *it);
-		pairs.erase(pairs.begin(), pairs.begin() + *it);
-		// loop throu pairs and push a section of the pairs into the main sequence
-		for (std::vector<std::vector<int> >::iterator it = pairs_batch.begin(); it != pairs_batch.end(); it++)
-			main.push_back((*it)[0]);
+		std::vector<int>::iterator	it_pend_batch_b = it_pend;
+		std::vector<int>::iterator	it_pend_batch_e = it_pend + *it;
+		it_pend += *it;
 		
-		// loop at reverse order to insert the b section of the pairs into the main sequence using binary search
-		std::vector<std::vector<int> >::iterator	insert = pairs_batch.end() -1;
+		std::vector<int>::iterator	insert = it_pend_batch_e -1;
 		while (true)
 		{
-			// look for a<i> in the main sequence to insert b<i> before it since b<i> < a<i>
-			int	right = main.size() -1;
-			while (main[right] != (*insert)[0])
-				right--;
-			// we put right -1 because b<i> is always before a<i> so it makes more sence not to include a<i> in the binary searched vector
-			int	insert_index = binary_insert(main, 0, right -1, (*insert)[1]);
-			main.insert(main.begin() + insert_index, (*insert)[1]);
-			if (insert == pairs_batch.begin())
+			std::vector<int>::iterator	it = std::upper_bound(main.begin(), main.end(), *insert);
+			main.insert(it, *insert);
+			if (insert == it_pend_batch_b)
 				break;
 			insert--;
 		}
 	}
 }
 
-void	insert_batches(std::vector<std::vector<int> > &main, std::vector<std::vector<int> > &groups, int lvl)
+bool t_num_cmp(t_num num1, t_num num2)
 {
-	std::vector<int>	batches = get_Jacobsthal_batches_vec(groups.size());
+    return num1.val < num2.val;
+}
+
+void	insert_batches(std::vector<t_num> &main, std::vector<t_num> &pend)
+{
+	std::vector<int>	batches = get_Jacobsthal_batches_vec(pend.size() -1);
+	std::vector<t_num>::iterator	it_pend = pend.begin() +1;
 	for (std::vector<int>::iterator it = batches.begin(); it != batches.end(); it++)
 	{
-		std::vector<std::vector<int> >	batch(groups.begin(), groups.begin() + *it);
-		groups.erase(groups.begin(), groups.begin() + *it);
+		std::vector<t_num>::iterator	it_pend_batch_b = it_pend;
+		std::vector<t_num>::iterator	it_pend_batch_e = it_pend + *it;
+		it_pend += *it;
 
-		// loop throu pairs and push a section of the pairs into the main sequence
-		for (std::vector<std::vector<int> >::iterator it = batch.begin(); it != batch.end(); it++)
-			main.push_back(std::vector<int>((*it).begin(), (*it).begin() +lvl));
-
-		// loop at reverse order to insert the b section of the pairs into the main sequence using binary search
-		std::vector<std::vector<int> >::iterator	insert = batch.end() -1;
+		std::vector<t_num>::iterator	insert = it_pend_batch_e -1;
 		while (true)
 		{
-			// look for a<i> in the main sequence to insert b<i> before it since b<i> < a<i>
-			int	right = main.size() -1;
-			while (main[right][0] != (*insert)[0])
-				right--;
-			// we put right -1 because b<i> is always before a<i> so it makes more sence not to include a<i> in the binary searched vector
-			int	insert_index = binary_insert(main, 0, right -1, (*insert)[lvl]);
-			main.insert(main.begin() + insert_index, std::vector<int>((*insert).begin() + lvl, (*insert).end()));
-			if (insert == batch.begin())
+			std::vector<t_num>::iterator	it = std::upper_bound(main.begin(), main.end(), *insert, t_num_cmp);
+			main.insert(it, *insert);
+			if (insert == it_pend_batch_b)
 				break;
 			insert--;
 		}
 	}
 }
 
-void	rec_vec_sort(std::vector<std::vector<int> > &vec, std::size_t lvl)
+void	rec_vec_sort(std::vector<t_num> &vec)
 {
 	if (vec.size() <= 1)
 		return ;
-	std::vector<int>	straggler;
+	t_num	straggler;
+	bool	has_straggler = false;
 	if (vec.size() % 2)
 	{
+		has_straggler = true;
 		straggler = vec.back();
 		vec.pop_back();
 	}
 
-	// make groups
-	std::vector<std::vector<int> >	groups;
-	for (std::vector<std::vector<int> >::iterator it = vec.begin(); it < vec.end(); it += 2)
+	std::vector<t_num>	main;
+	std::vector<t_num>	tmp;
+	std::vector<std::size_t>	previous_indexes;
+	int	i = 0;
+	for (std::vector<t_num>::iterator it = vec.begin(); it < vec.end(); it += 2)
 	{
-		std::vector<int>	group;
-		if ((*it)[0] > (*(it +1))[0])
+		if ((*it).val > (*(it+1)).val)
 		{
-			group.insert(group.end(), (*it).begin(), (*it).end());
-			group.insert(group.end(), (*(it+1)).begin(), (*(it+1)).end());
+			previous_indexes.push_back((*it).old);
+			(*it).old = i;
+			main.push_back(*it);
+			tmp.push_back(*(it+1));
 		}
 		else
 		{
-			group.insert(group.end(), (*(it+1)).begin(), (*(it+1)).end());
-			group.insert(group.end(), (*it).begin(), (*it).end());
+			previous_indexes.push_back((*(it+1)).old);
+			(*(it+1)).old = i;
+			main.push_back(*(it+1));
+			tmp.push_back(*it);
 		}
-		groups.push_back(group);
+		i++;
 	}
 	
-	// recursively sort the pairs
-	rec_vec_sort(groups, lvl * 2);
+	rec_vec_sort(main);
 
-	// make main and pend sequences
-	std::vector<std::vector<int> >	main;
-	main.push_back(std::vector<int>(groups[0].begin() +lvl, groups[0].end()));
-	main.push_back(std::vector<int>(groups[0].begin(), groups[0].begin() +lvl));
-	groups.erase(groups.begin());
-	
-	// get batches for insert and do binary inserts
-	insert_batches(main, groups, lvl);
-	
-	// insert straggler
-	if (straggler.size() != 0)
+	std::vector<t_num>	pend;
+	for (std::vector<t_num>::iterator it = main.begin(); it < main.end(); it++)
 	{
-		int index = binary_insert(main, 0, main.size() -1, straggler[0]);
-		main.insert(main.begin() + index, straggler);
+		pend.push_back(tmp[(*it).old]);
+		(*it).old = previous_indexes[(*it).old];
+	}
+	
+
+	main.insert(main.begin(), pend[0]);
+	
+	insert_batches(main, pend);
+	
+	if (has_straggler)
+	{
+		std::vector<t_num>::iterator	it = std::upper_bound(main.begin(), main.end(), straggler, t_num_cmp);
+		main.insert(it, straggler);
 	}
 
 	vec = main;
@@ -210,46 +173,59 @@ void	PmergeMe::vec_sort(std::vector<int> &vec)
 {
 	if (vec.size() <= 1)
 		return ;
-	int	straggler = -1;
+	int	straggler;
+	bool	has_straggler = false;
 	if (vec.size() % 2)
 	{
+		has_straggler = true;
 		straggler = vec.back();
 		vec.pop_back();
 	}
 	
-	// make pairs (ordred)
-	std::vector<std::vector<int> >	pairs;
+	std::vector<t_num>	main_tnum;
+	std::vector<int >	tmp;
+	int	i = 0;
 	for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); it += 2)
 	{
-		std::vector<int>	pair;
-		pair.push_back(std::max(*it, *(it +1)));
-		pair.push_back(std::min(*it, *(it +1)));
-		pairs.push_back(pair);
+		t_num	num;
+		num.val = std::max(*it, *(it +1));
+		num.old = i;
+		main_tnum.push_back(num);
+		tmp.push_back(std::min(*it, *(it +1)));
+		i++;
 	}
 
-	// recursively sort the pairs
-	rec_vec_sort(pairs, 2);
+	rec_vec_sort(main_tnum);
 	
-	// make main and pend sequences
 	std::vector<int>	main;
-	main.push_back(pairs[0][1]);
-	main.push_back(pairs[0][0]);
-	pairs.erase(pairs.begin());
+	std::vector<int>	pend;
 	
-	// get batches for insert and do binary inserts
-	insert_batches(main, pairs);
-	
-	// insert straggler
-	if (straggler != -1)
+	for (std::vector<t_num>::iterator it = main_tnum.begin(); it < main_tnum.end(); it++)
 	{
-		int index = binary_insert(main, 0, main.size() -1, straggler);
-		main.insert(main.begin() + index, straggler);
+		main.push_back((*it).val);
+		pend.push_back(tmp[(*it).old]);
+	}
+	
+	main.insert(main.begin(), pend[0]);
+	
+	insert_batches(main, pend);
+	
+	if (has_straggler)
+	{
+		std::vector<int>::iterator	it = std::upper_bound(main.begin(), main.end(), straggler);
+		main.insert(it, straggler);
 	}
 
 	vec = main;
 }
 
-// deque
+
+
+
+
+
+
+
 std::deque<int>	get_Jacobsthal_batches_deq(int m)
 {
 	std::deque<int>	batches;
@@ -268,185 +244,155 @@ std::deque<int>	get_Jacobsthal_batches_deq(int m)
 	return (batches);
 }
 
-int	binary_insert(const std::deque<int> &vec, int left, int right, int value)
+void	insert_batches(std::deque<int> &main, std::deque<int> &pend)
 {
-	while (left <= right)
-	{
-		int	mid = left + (right - left) /2;
-		if (value == vec[mid])
-			return (mid);
-		else if (value > vec[mid])
-			left = mid +1;
-		else
-			right = mid -1;
-	}
-	return (left);
-}
-
-int	binary_insert(const std::deque<std::deque<int> > &vec, int left, int right, int value)
-{
-	while (left <= right)
-	{
-		int	mid = left + (right - left) /2;
-		if (value == vec[mid][0])
-			return (mid);
-		else if (value > vec[mid][0])
-			left = mid +1;
-		else
-			right = mid -1;
-	}
-	return (left);
-}
-
-void	insert_batches(std::deque<int> &main, std::deque<std::deque<int> > &pairs)
-{
-	std::deque<int>	batches = get_Jacobsthal_batches_deq(pairs.size());
+	std::deque<int>	batches = get_Jacobsthal_batches_deq(pend.size() -1);
+	std::deque<int>::iterator	it_pend = pend.begin() +1;
 	for (std::deque<int>::iterator it = batches.begin(); it != batches.end(); it++)
 	{
-		std::deque<std::deque<int> >	pairs_batch(pairs.begin(), pairs.begin() + *it);
-		pairs.erase(pairs.begin(), pairs.begin() + *it);
-		// loop throu pairs and push a section of the pairs into the main sequence
-		for (std::deque<std::deque<int> >::iterator it = pairs_batch.begin(); it != pairs_batch.end(); it++)
-			main.push_back((*it)[0]);
+		std::deque<int>::iterator	it_pend_batch_b = it_pend;
+		std::deque<int>::iterator	it_pend_batch_e = it_pend + *it;
+		it_pend += *it;
 		
-		// loop at reverse order to insert the b section of the pairs into the main sequence using binary search
-		std::deque<std::deque<int> >::iterator	insert = pairs_batch.end() -1;
+		std::deque<int>::iterator	insert = it_pend_batch_e -1;
 		while (true)
 		{
-			// look for a<i> in the main sequence to insert b<i> before it since b<i> < a<i>
-			int	right = main.size() -1;
-			while (main[right] != (*insert)[0])
-				right--;
-			// we put right -1 because b<i> is always before a<i> so it makes more sence not to include a<i> in the binary searched vector
-			int	insert_index = binary_insert(main, 0, right -1, (*insert)[1]);
-			main.insert(main.begin() + insert_index, (*insert)[1]);
-			if (insert == pairs_batch.begin())
+			std::deque<int>::iterator	it = std::upper_bound(main.begin(), main.end(), *insert);
+			main.insert(it, *insert);
+			if (insert == it_pend_batch_b)
 				break;
 			insert--;
 		}
 	}
 }
 
-void	insert_batches(std::deque<std::deque<int> > &main, std::deque<std::deque<int> > &groups, int lvl)
+void	insert_batches(std::deque<t_num> &main, std::deque<t_num> &pend)
 {
-	std::deque<int>	batches = get_Jacobsthal_batches_deq(groups.size());
+	std::deque<int>	batches = get_Jacobsthal_batches_deq(pend.size() -1);
+	std::deque<t_num>::iterator	it_pend = pend.begin() +1;
 	for (std::deque<int>::iterator it = batches.begin(); it != batches.end(); it++)
 	{
-		std::deque<std::deque<int> >	batch(groups.begin(), groups.begin() + *it);
-		groups.erase(groups.begin(), groups.begin() + *it);
+		std::deque<t_num>::iterator	it_pend_batch_b = it_pend;
+		std::deque<t_num>::iterator	it_pend_batch_e = it_pend + *it;
+		it_pend += *it;
 
-		// loop throu pairs and push a section of the pairs into the main sequence
-		for (std::deque<std::deque<int> >::iterator it = batch.begin(); it != batch.end(); it++)
-			main.push_back(std::deque<int>((*it).begin(), (*it).begin() +lvl));
-
-		// loop at reverse order to insert the b section of the pairs into the main sequence using binary search
-		std::deque<std::deque<int> >::iterator	insert = batch.end() -1;
+		std::deque<t_num>::iterator	insert = it_pend_batch_e -1;
 		while (true)
 		{
-			// look for a<i> in the main sequence to insert b<i> before it since b<i> < a<i>
-			int	right = main.size() -1;
-			while (main[right][0] != (*insert)[0])
-				right--;
-			// we put right -1 because b<i> is always before a<i> so it makes more sence not to include a<i> in the binary searched vector
-			int	insert_index = binary_insert(main, 0, right -1, (*insert)[lvl]);
-			main.insert(main.begin() + insert_index, std::deque<int>((*insert).begin() + lvl, (*insert).end()));
-			if (insert == batch.begin())
+			std::deque<t_num>::iterator	it = std::upper_bound(main.begin(), main.end(), *insert, t_num_cmp);
+			main.insert(it, *insert);
+			if (insert == it_pend_batch_b)
 				break;
 			insert--;
 		}
 	}
 }
 
-void	rec_deq_sort(std::deque<std::deque<int> > &deq, std::size_t lvl)
+void	rec_vec_sort(std::deque<t_num> &vec)
 {
-	if (deq.size() <= 1)
+	if (vec.size() <= 1)
 		return ;
-	std::deque<int>	straggler;
-	if (deq.size() % 2)
+	t_num	straggler;
+	bool	has_straggler = false;
+	if (vec.size() % 2)
 	{
-		straggler = deq.back();
-		deq.pop_back();
+		has_straggler = true;
+		straggler = vec.back();
+		vec.pop_back();
 	}
 
-	// make groups
-	std::deque<std::deque<int> >	groups;
-	for (std::deque<std::deque<int> >::iterator it = deq.begin(); it < deq.end(); it += 2)
+	std::deque<t_num>	main;
+	std::deque<t_num>	tmp;
+	std::deque<std::size_t>	previous_indexes;
+	int	i = 0;
+	for (std::deque<t_num>::iterator it = vec.begin(); it < vec.end(); it += 2)
 	{
-		std::deque<int>	group;
-		if ((*it)[0] > (*(it +1))[0])
+		if ((*it).val > (*(it+1)).val)
 		{
-			group.insert(group.end(), (*it).begin(), (*it).end());
-			group.insert(group.end(), (*(it+1)).begin(), (*(it+1)).end());
+			previous_indexes.push_back((*it).old);
+			(*it).old = i;
+			main.push_back(*it);
+			tmp.push_back(*(it+1));
 		}
 		else
 		{
-			group.insert(group.end(), (*(it+1)).begin(), (*(it+1)).end());
-			group.insert(group.end(), (*it).begin(), (*it).end());
+			previous_indexes.push_back((*(it+1)).old);
+			(*(it+1)).old = i;
+			main.push_back(*(it+1));
+			tmp.push_back(*it);
 		}
-		groups.push_back(group);
+		i++;
 	}
 	
-	// recursively sort the pairs
-	rec_deq_sort(groups, lvl * 2);
+	rec_vec_sort(main);
 
-	// make main and pend sequences
-	std::deque<std::deque<int> >	main;
-	main.push_back(std::deque<int>(groups[0].begin() +lvl, groups[0].end()));
-	main.push_back(std::deque<int>(groups[0].begin(), groups[0].begin() +lvl));
-	groups.erase(groups.begin());
-	
-	// get batches for insert and do binary inserts
-	insert_batches(main, groups, lvl);
-	
-	// insert straggler
-	if (straggler.size() != 0)
+	std::deque<t_num>	pend;
+	for (std::deque<t_num>::iterator it = main.begin(); it < main.end(); it++)
 	{
-		int index = binary_insert(main, 0, main.size() -1, straggler[0]);
-		main.insert(main.begin() + index, straggler);
+		pend.push_back(tmp[(*it).old]);
+		(*it).old = previous_indexes[(*it).old];
+	}
+	
+
+	main.insert(main.begin(), pend[0]);
+	
+	insert_batches(main, pend);
+	
+	if (has_straggler)
+	{
+		std::deque<t_num>::iterator	it = std::upper_bound(main.begin(), main.end(), straggler, t_num_cmp);
+		main.insert(it, straggler);
 	}
 
-	deq = main;
+	vec = main;
 }
 
-void	PmergeMe::deq_sort(std::deque<int> &deq)
+void	PmergeMe::deq_sort(std::deque<int> &vec)
 {
-	if (deq.size() <= 1)
+	if (vec.size() <= 1)
 		return ;
-	int	straggler = -1;
-	if (deq.size() % 2)
+	int	straggler;
+	bool	has_straggler = false;
+	if (vec.size() % 2)
 	{
-		straggler = deq.back();
-		deq.pop_back();
+		has_straggler = true;
+		straggler = vec.back();
+		vec.pop_back();
 	}
 	
-	// make pairs (ordred)
-	std::deque<std::deque<int> >	pairs;
-	for (std::deque<int>::iterator it = deq.begin(); it != deq.end(); it += 2)
+	std::deque<t_num>	main_tnum;
+	std::deque<int >	tmp;
+	int	i = 0;
+	for (std::deque<int>::iterator it = vec.begin(); it != vec.end(); it += 2)
 	{
-		std::deque<int>	pair;
-		pair.push_back(std::max(*it, *(it +1)));
-		pair.push_back(std::min(*it, *(it +1)));
-		pairs.push_back(pair);
+		t_num	num;
+		num.val = std::max(*it, *(it +1));
+		num.old = i;
+		main_tnum.push_back(num);
+		tmp.push_back(std::min(*it, *(it +1)));
+		i++;
 	}
 
-	// recursively sort the pairs
-	rec_deq_sort(pairs, 2);
+	rec_vec_sort(main_tnum);
 	
-	// make main and pend sequences
 	std::deque<int>	main;
-	main.push_back(pairs[0][1]);
-	main.push_back(pairs[0][0]);
-	pairs.erase(pairs.begin());
+	std::deque<int>	pend;
 	
-	// get batches for insert and do binary inserts
-	insert_batches(main, pairs);
-	
-	// insert straggler
-	if (straggler != -1)
+	for (std::deque<t_num>::iterator it = main_tnum.begin(); it < main_tnum.end(); it++)
 	{
-		int index = binary_insert(main, 0, main.size() -1, straggler);
-		main.insert(main.begin() + index, straggler);
+		main.push_back((*it).val);
+		pend.push_back(tmp[(*it).old]);
+	}
+	
+	main.insert(main.begin(), pend[0]);
+	
+	insert_batches(main, pend);
+	
+	if (has_straggler)
+	{
+		std::deque<int>::iterator	it = std::upper_bound(main.begin(), main.end(), straggler);
+		main.insert(it, straggler);
 	}
 
-	deq = main;
+	vec = main;
 }

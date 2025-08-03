@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 23:50:39 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/06/19 02:50:41 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/08/03 16:32:05 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,26 @@ double getTimeInUsec(void)
     return (tv.tv_sec * 1e6 + tv.tv_usec);
 }
 
+bool	test(std::vector<int> vec)
+{
+	for (std::vector<int>::iterator it = vec.begin(); it < vec.end() -1; it++)
+	{
+		if (*it > *(it+1))
+			return (false);
+	}
+	return (true);
+}
+
+bool	test(std::deque<int> vec)
+{
+	for (std::deque<int>::iterator it = vec.begin(); it < vec.end() -1; it++)
+	{
+		if (*it > *(it+1))
+			return (false);
+	}
+	return (true);
+}
+
 int	main(int argc, char **argv)
 {
 	if (argc == 1)
@@ -88,6 +108,11 @@ int	main(int argc, char **argv)
 	sort_algo.deq_sort(deq);
 	end = getTimeInUsec();
 	std::cout << "Time to process a range of " << deq.size() << " elements with std::deque : " << end - start << " us" << std::endl;
+
+	if (test(vec) && test(deq))
+		std::cout << "OK\n";
+	else
+		std::cout << "KO\n";
 
 	return (0);
 }

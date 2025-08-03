@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 23:51:19 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/06/19 02:17:10 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/08/03 16:25:10 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,21 @@
 # include <sys/time.h>
 # include <vector>
 # include <deque>
+# include <algorithm>
+
+typedef	struct s_num
+{
+	int			val;
+	std::size_t	old;
+}	t_num;
+
 
 class PmergeMe
 {
 	public:
 		PmergeMe(void);
+		PmergeMe(const PmergeMe& other);
+		PmergeMe&	operator=(const PmergeMe& other);
 		~PmergeMe(void);
 
 		void	vec_sort(std::vector<int> &vec);
