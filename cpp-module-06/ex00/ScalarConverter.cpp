@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 20:39:17 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/07/17 21:10:52 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/08/07 02:22:53 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,40 @@ t_type	ScalarConverter::get_type(const std::string& literal)
 {
 	if (!literal.size())
 		return (NONE);
-	if (literal == "nan")
+	if (literal == "nan" || literal == "nanf" || literal == "inf" || literal == "inff" || literal == "+inf" || literal == "-inf" || literal == "+inff" || literal == "-inff")
 		return (FLOAT);
 	if (literal.size() == 1 && !std::isdigit(literal[0]))
 		return (CHAR);
 	std::string::const_iterator	it = literal.begin();
-	if (*it == '-' || *it == '+')
+	if (it != literal.end() && (*it == '-' || *it == '+'))
 		it++;
-	while (std::isdigit(*it))
+	while (it != literal.end() && std::isdigit(*it))
 		it++;
 	if (it == literal.end())
 		return (INT);
 	if (*it == '.')
 	{
 		it++;
-		while (std::isdigit(*it))
+		while (it != literal.end() && std::isdigit(*it))
 			it++;
+		if (*(it -1) == '.' && (it -1 == literal.begin() || !std::isdigit(*(it -2))))
+			return (NONE);
 		if (it == literal.end())
 			return (DOUBLE);
 		if (*it == 'f')
 			it++;
+	}
+	else if (*it == 'e' || *it == 'E')
+	{
+		if (it == literal.begin() || !std::isdigit(*(it -1)))
+			return (NONE);
+		it++;
+		if (it != literal.end() && (*it == '+' || *it == '-'))
+			it++;
+		while (it != literal.end() && std::isdigit(*it))
+			it++;
+		if (it != literal.end() && !std::isdigit(*(it -1)))
+			return (NONE);
 	}
 	if (it == literal.end())
 		return (FLOAT);
@@ -99,17 +113,16 @@ void	ScalarConverter::convert(const std::string& literal)
 {
 	// You have to first detect the type of the literal passed as parameter
 	t_type	t = get_type(literal);
-	if (t == NONE)
-	{
-		std::cout << "Invalid number" << std::endl;
-		return ;
-	}
+
 	char	c;
 	int		i;
 	float	f;
 	double	d;
 	switch (t)
 	{
+		case NONE:
+			std::cout << "Invalid number" << std::endl;
+			return ;
 		case CHAR:
 			handle_char(literal, c, i, f, d);
 			break;
@@ -128,7 +141,7 @@ void	ScalarConverter::convert(const std::string& literal)
 	std::cout << "char: ";
 	if (d > 31.0 && d < 127.0)
 		std::cout << "'" << c << "'" << std::endl;
-	else if (std::isnan(d))
+	else if (std::isnan(d) || std::isinf(d))
 		std::cout << "impossible" << std::endl;
 	else
 		std::cout << "Non displayable" << std::endl;
