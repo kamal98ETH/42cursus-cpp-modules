@@ -2,7 +2,7 @@ NAME = form
 
 COMPILER = c++
 
-FLAGS = -g3 -std=c++98
+FLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 

@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 00:23:17 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/07/16 01:44:09 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/08/07 00:53:11 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,43 +18,19 @@ void	testCases(AForm *sign, AForm* noSign, Bureaucrat B1, Bureaucrat B2, Bureauc
 {
 	std::cout << "		* Sign with first bureaurat" << std::endl;
 	B1.signForm(*sign);
+
 	std::cout << "		* Sign with second bureaurat" << std::endl;
 	B2.signForm(*sign);
+
 	std::cout << "		* execute signed form with high grade bureaucrat" << std::endl;
-	try
-	{
-		B3.executeForm(*sign);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << "Execption caught: " << e.what() << std::endl;
-	}
+	B3.executeForm(*sign);
+
 	std::cout << "		* execute signed form with not a high enough grade bureaucrat" << std::endl;
-	try
-	{
-		B1.executeForm(*sign);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << "Execption caught: " << e.what() << std::endl;
-	}
-	try
-	{
-		B2.executeForm(*sign);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << "Execption caught: " << e.what() << std::endl;
-	}
+	B1.executeForm(*sign);
+	B2.executeForm(*sign);
+	
 	std::cout << "		* execute unsigned form with high grade bureaucrat" << std::endl;
-	try
-	{
-		B3.executeForm(*noSign);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << "Execption caught: " << e.what() << std::endl;
-	}
+	B3.executeForm(*noSign);
 }
 
 int	main()

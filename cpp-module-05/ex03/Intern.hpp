@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 01:48:30 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/03/27 06:09:10 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/08/07 01:03:16 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 
 class Intern
 {
+	private:
+		AForm*	makeSC(std::string formTarget);
+		AForm*	makeRR(std::string formTarget);
+		AForm*	makePP(std::string formTarget);
 	public:
 		Intern(void);
 		Intern(const Intern& other);

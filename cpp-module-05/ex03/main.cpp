@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 00:23:17 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/03/27 22:20:21 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/08/07 01:12:23 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int	main()
 	AForm* noform;
 
 	rrf = someRandomIntern.makeForm("robotomy request", "Bender");
-	ppf = someRandomIntern.makeForm("pr esi dENTIAL Pardon", "Home");
-	scf = someRandomIntern.makeForm("shRUbbER YC reation", "School");
-	noform = someRandomIntern.makeForm("1shRUbbER YC reation", "Invalid");
+	ppf = someRandomIntern.makeForm("presidential pardon", "Home");
+	scf = someRandomIntern.makeForm("shrubbery creation", "School");
+	noform = someRandomIntern.makeForm("no form", "Invalid");
 	
 	highGrade.signForm(*rrf);
 	highGrade.signForm(*ppf);
