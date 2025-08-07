@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 21:02:20 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/07/18 15:34:05 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/08/07 02:25:39 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include <iostream>
 
-template <typename T>
-void	iter(T *arr, std::size_t len, void (*func)(T&))
+template <typename T, typename R>
+void	iter(T *arr, std::size_t len, R (*func)(T&))
 {
 	for (std::size_t i = 0; i < len; i++)
 		func(arr[i]);

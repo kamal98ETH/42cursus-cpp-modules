@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 03:18:42 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/07/17 22:11:52 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/08/07 02:26:36 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,21 @@ void	identify(Base& p)
 {
 	try
 	{
-		dynamic_cast<A&>(p);
+		(void)dynamic_cast<A&>(p);
 		std::cout << "This is an object of type A" << std::endl;
 	}
 	catch(const std::exception& e)
 	{
 		try
 		{
-			dynamic_cast<B&>(p);
+			(void)dynamic_cast<B&>(p);
 			std::cout << "This is an object of type B" << std::endl;
 		}
 		catch(const std::exception& e)
 		{
 			try
 			{
-				dynamic_cast<C&>(p);
+				(void)dynamic_cast<C&>(p);
 				std::cout << "This is an object of type C" << std::endl;
 			}
 			catch(const std::exception& e)
