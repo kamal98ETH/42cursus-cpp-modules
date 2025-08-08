@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 19:34:07 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/07/25 22:24:36 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/08/08 01:12:41 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,16 @@ Span::~Span() {}
 void	Span::addNumber(int n)
 {
 	if (_container.size() >= _N)
-		throw std::runtime_error("Container full");
+		throw std::runtime_error("Not enough space");
 	_container.push_back(n);
 }
+
+void	Span::addManyNumbers(std::vector<int>::iterator first, std::vector<int>::iterator last)	
+{
+	if (_container.size() + (last - first) > _N)
+		throw std::runtime_error("Not enough space");
+	_container.insert(_container.end(), first, last);
+};
 
 int	 	Span::shortestSpan(void)
 {
