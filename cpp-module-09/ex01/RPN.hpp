@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 20:36:58 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/06/09 22:24:32 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/09/20 22:58:36 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ class RPN
 		std::stack<int>	_s;
 	public:
 		RPN(void);
+		RPN(const RPN& other);
+		RPN&	operator=(const RPN& other);
 		~RPN(void);
 
 		void	add(char c);

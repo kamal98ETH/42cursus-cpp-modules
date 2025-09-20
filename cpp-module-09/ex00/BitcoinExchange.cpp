@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 18:57:17 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/07/30 03:29:10 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/09/20 22:37:44 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,12 +160,18 @@ BitcoinExchange::BitcoinExchange(const char* filename, int &ret)
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange& other)
 {
-	(void)other;
+	if (this != &other)
+	{
+		_c = other._c;
+	}
 }
 
 BitcoinExchange&	BitcoinExchange::operator=(const BitcoinExchange& other)
 {
-	(void)other;
+	if (this != &other)
+	{
+		_c = other._c;
+	}
 	return (*this);
 }
 

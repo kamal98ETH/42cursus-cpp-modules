@@ -6,19 +6,32 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 20:36:55 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/06/09 22:52:26 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/09/20 23:00:45 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 
-RPN::RPN(void)
+RPN::RPN(void) {}
+
+RPN::RPN(const RPN& other)
 {
+	if (this != &other)
+	{
+		_s = other._s;
+	}
 }
 
-RPN::~RPN(void)
+RPN&	RPN::operator=(const RPN& other)
 {
+	if (this != &other)
+	{
+		_s = other._s;
+	}
+	return (*this);
 }
+
+RPN::~RPN(void) {}
 
 int	calculate(char op, int i1, int i2)
 {
