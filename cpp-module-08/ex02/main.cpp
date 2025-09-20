@@ -6,7 +6,7 @@
 /*   By: kez-zoub <kez-zoub@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 18:58:36 by kez-zoub          #+#    #+#             */
-/*   Updated: 2025/08/08 01:22:48 by kez-zoub         ###   ########.fr       */
+/*   Updated: 2025/09/20 20:18:08 by kez-zoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,18 @@ void	my_test(void)
 	std::cout << "printing const stack...\n";
 	const MutantStack<int> my_const_stack(mystack);
 	for (MutantStack<int>::const_iterator it = my_const_stack.begin(); it < my_const_stack.end(); it++)
+	{
+		std::cout << *it << std::endl;
+	}
+
+	std::cout << "-------------- reverse iteration --------------\n";
+	std::cout << "printing non-const stack...\n";
+	for (MutantStack<int>::reverse_iterator it = mystack.rbegin(); it < mystack.rend(); it++)
+	{
+		std::cout << *it << std::endl;
+	}
+	std::cout << "printing const stack...\n";
+	for (MutantStack<int>::const_reverse_iterator it = my_const_stack.rbegin(); it < my_const_stack.rend(); it++)
 	{
 		std::cout << *it << std::endl;
 	}
