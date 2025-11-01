@@ -54,26 +54,6 @@ double getTimeInUsec(void)
     return (tv.tv_sec * 1e6 + tv.tv_usec);
 }
 
-bool	test(std::vector<int> vec)
-{
-	for (std::vector<int>::iterator it = vec.begin(); it < vec.end() -1; it++)
-	{
-		if (*it > *(it+1))
-			return (false);
-	}
-	return (true);
-}
-
-bool	test(std::deque<int> vec)
-{
-	for (std::deque<int>::iterator it = vec.begin(); it < vec.end() -1; it++)
-	{
-		if (*it > *(it+1))
-			return (false);
-	}
-	return (true);
-}
-
 int	main(int argc, char **argv)
 {
 	if (argc == 1)
@@ -100,7 +80,7 @@ int	main(int argc, char **argv)
 	sort_algo.vec_sort(vec);
 	double	end = getTimeInUsec();
 
-	std::cout << "After: ";
+	std::cout << "After:  ";
 	print_vec(vec);
 	std::cout << "Time to process a range of " << vec.size() << " elements with std::vector : " << end - start << " us" << std::endl;
 
@@ -108,11 +88,6 @@ int	main(int argc, char **argv)
 	sort_algo.deq_sort(deq);
 	end = getTimeInUsec();
 	std::cout << "Time to process a range of " << deq.size() << " elements with std::deque : " << end - start << " us" << std::endl;
-
-	if (test(vec) && test(deq))
-		std::cout << "OK\n";
-	else
-		std::cout << "KO\n";
 
 	return (0);
 }

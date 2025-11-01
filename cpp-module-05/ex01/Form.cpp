@@ -27,10 +27,7 @@ Form::Form(const Form& other) : _name(other._name), _signed(other._signed), _sig
 Form&	Form::operator=(const Form& other)
 {
 	if (this != &other)
-	{
-		this->~Form();
-		new (this) Form(other); // investigate
-	}
+		_signed = other._signed;
 	return (*this);
 }
 

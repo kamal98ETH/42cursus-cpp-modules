@@ -51,7 +51,7 @@ int	main(void)
 	named.beRepaired(20);
 		
 	// check if the dead object can attack or heal
-	std::cout << " -> named attacks and repears after death\n";
+	std::cout << " -> dflt attacks and repears after death\n";
 	dflt.attack("3ntr");
 	dflt.beRepaired(20);
 	

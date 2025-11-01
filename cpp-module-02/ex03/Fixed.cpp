@@ -79,7 +79,6 @@ std::ostream& operator<<(std::ostream &out, const Fixed &fixed)
     return out;
 }
 
-// The 6 comparison operators
 bool	Fixed::operator>(const Fixed& other) const
 {
 	return (_value > other._value);
@@ -110,7 +109,6 @@ bool	Fixed::operator!=(const Fixed& other) const
 	return (_value != other._value);
 }
 
-// The 4 arithmetic operators
 Fixed	Fixed::operator+(const Fixed &other)
 {
 	Fixed	result;
@@ -143,7 +141,6 @@ Fixed	Fixed::operator/(const Fixed &other)
 	return result;
 }
 
-// The 4 increment/decrement
 Fixed&	Fixed::operator++(void)
 {
 	_value++;
@@ -170,7 +167,6 @@ Fixed	Fixed::operator--(int)
 	return (tmp);
 }
 
-// The 4 max/min getters
 Fixed&	Fixed::min(Fixed& a, Fixed& b)
 {
 	if (a <= b)

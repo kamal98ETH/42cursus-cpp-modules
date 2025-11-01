@@ -16,11 +16,18 @@ RobotomyRequestForm::RobotomyRequestForm(void) : AForm("RobotomyRequest", 72, 45
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequest", 72, 45), target(target) {}
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other) : AForm(other) {}
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other) : AForm(other)
+{
+	target = other.target;
+}
 
 RobotomyRequestForm&	RobotomyRequestForm::operator=(const RobotomyRequestForm& other)
 {
-	(void)other;
+	if (this != &other)
+	{
+		AForm::operator=(other);
+		target = other.target;
+	}
 	return (*this);
 }
 

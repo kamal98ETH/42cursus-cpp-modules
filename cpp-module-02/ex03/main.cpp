@@ -19,7 +19,9 @@ int	main(void)
 	Point	c(4, -1);
 	Point	x(-1.21, 1.61);
 	Point	y(-1.21, 1.6);
+	Point	z(-2, 2);
 	std::cout << "For point (-1.21, 1.61) : " << bsp(a, b, c, x) << std::endl;
 	std::cout << "For point (-1.21, 1.6)  : " << bsp(a, b, c, y) << std::endl;
+	std::cout << "For point (-2, 2)       : " << bsp(a, b, c, z) << std::endl;
 	return (0);
 }

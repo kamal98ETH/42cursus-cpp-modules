@@ -16,10 +16,7 @@ RPN::RPN(void) {}
 
 RPN::RPN(const RPN& other)
 {
-	if (this != &other)
-	{
-		_s = other._s;
-	}
+	_s = other._s;
 }
 
 RPN&	RPN::operator=(const RPN& other)

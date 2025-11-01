@@ -12,9 +12,10 @@
 
 #include "WrongAnimal.hpp"
 
-WrongAnimal::WrongAnimal(void) : type("WrongAnimal")
+WrongAnimal::WrongAnimal(void)
 {
 	std::cout << "Default constructor of WrongAnimal is called" << std::endl;
+	type = "WrongAnimal";
 }
 
 WrongAnimal::WrongAnimal(const WrongAnimal &other)

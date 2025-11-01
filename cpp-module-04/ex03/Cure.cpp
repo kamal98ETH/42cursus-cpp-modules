@@ -12,7 +12,7 @@
 
 #include "Cure.hpp"
 
-Cure::Cure(void)
+Cure::Cure(void): AMateria()
 {
 	type = "cure";
 }

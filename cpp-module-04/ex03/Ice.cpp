@@ -12,7 +12,7 @@
 
 #include "Ice.hpp"
 
-Ice::Ice(void)
+Ice::Ice(void) : AMateria()
 {
 	type = "ice";
 }

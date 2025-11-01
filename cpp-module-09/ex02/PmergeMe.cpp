@@ -12,21 +12,6 @@
 
 #include "PmergeMe.hpp"
 
-void	print_vec(std::vector<int> vec, bool nl)
-{
-	std::cout << "[ ";
-	for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); it++)
-	{
-		if (it != vec.end() -1)
-			std::cout << *it << ", ";
-		else
-			std::cout << *it;
-	}
-	std::cout << " ]";
-	if (nl)
-		std::cout << std::endl;
-}
-
 PmergeMe::PmergeMe(void) {}
 
 PmergeMe::PmergeMe(const PmergeMe& other)

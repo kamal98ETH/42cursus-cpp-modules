@@ -32,24 +32,20 @@ class Fixed
 		void	setRawBits( int const raw );
 		float	toFloat( void ) const;
 		int 	toInt( void ) const;
-		// The 6 comparison operators
 		bool	operator>(const Fixed& other) const;
 		bool	operator<(const Fixed& other) const;
 		bool	operator>=(const Fixed& other) const;
 		bool	operator<=(const Fixed& other) const;
 		bool	operator==(const Fixed& other) const;
 		bool	operator!=(const Fixed& other) const;
-		// The 4 arithmetic operators
 		Fixed	operator+(const Fixed& other);
 		Fixed	operator-(const Fixed& other);
 		Fixed	operator*(const Fixed& other);
 		Fixed	operator/(const Fixed& other);
-		// The 4 increment/decrement
-		Fixed	&operator++(void); // Pre-increment
-		Fixed	operator++(int); // Post-increment
-		Fixed	&operator--(void); // Pre-decrement
-		Fixed	operator--(int); // Post-decrement
-		// The 4 max/min getters
+		Fixed	&operator++(void);
+		Fixed	operator++(int);
+		Fixed	&operator--(void);
+		Fixed	operator--(int);
 		static Fixed&	min(Fixed& a, Fixed& b);
 		static const Fixed&	min(const Fixed& a, const Fixed& b);
 		static Fixed&	max(Fixed& a, Fixed& b);

@@ -12,9 +12,10 @@
 
 #include "Animal.hpp"
 
-Animal::Animal(void) : type("Animal")
+Animal::Animal(void)
 {
 	std::cout << "Default constructor of Animal is called" << std::endl;
+	type = "Animal";
 }
 
 Animal::Animal(const Animal &other)

@@ -27,9 +27,7 @@ bool	testVector(Point const first, Point const second, Point const point, Fixed 
 	Fixed	zero(0);
 	Fixed	pntCp = crossProduct(first, second, point);
 
-	if (pntCp == zero)
-		return (false);
-	if ((cp > 0 && pntCp < 0) || (cp < 0 && pntCp > 0))
+	if (pntCp == zero || (cp > zero && pntCp < zero) || (cp < zero && pntCp > zero))
 		return (false);
 	return (true);
 }

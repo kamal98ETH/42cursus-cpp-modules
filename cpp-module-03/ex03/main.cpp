@@ -34,7 +34,7 @@ int	main(void)
 
 	// attack multiple times untill half energy is consumed this will kill dflt after 5 attacks the rest of attacks won't damage it anymore
 	std::cout << " -> named attacks default that will take damage\n";
-	for (int i = 0; i < 50; i++)
+	for (int i = 0; i < 25; i++)
 	{
 		named.attack("random");
 		dflt.takeDamage(30);
@@ -42,7 +42,7 @@ int	main(void)
 	
 	// heal multiple times untill the rest is consumed
 	std::cout << " -> named repears itself\n";
-	for (int i = 0; i < 50; i++)
+	for (int i = 0; i < 25; i++)
 		named.beRepaired(30);
 
 	// try to attack and heal now when you have 0 energy

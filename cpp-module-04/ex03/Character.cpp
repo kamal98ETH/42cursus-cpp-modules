@@ -12,19 +12,19 @@
 
 #include "Character.hpp"
 
-Character::Character(void) : name("character"), totalArchive(0), archive(NULL)
+Character::Character(void) : name("character"), archive(NULL), totalArchive(0)
 {
 	for (int i = 0; i < 4; i++)
 		inventory[i] = NULL;
 }
 
-Character::Character(std::string n) : name(n), totalArchive(0), archive(NULL)
+Character::Character(std::string n) : name(n), archive(NULL), totalArchive(0)
 {
 	for (int i = 0; i < 4; i++)
 		inventory[i] = NULL;
 }
 
-Character::Character(const Character& other) : name(other.name), totalArchive(0), archive(NULL)
+Character::Character(const Character& other) : name(other.name), archive(NULL), totalArchive(0)
 {
 	for (int i = 0; i < 4; i++)
 	{

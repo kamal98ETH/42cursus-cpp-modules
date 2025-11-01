@@ -18,6 +18,11 @@ int	main(void)
 	randomChump("stack");
 	std::cout << "zombie in heap" << std::endl;
 	Zombie	*heap_zombie = newZombie("heap");
+	if (!heap_zombie)
+	{
+		std::cerr << "Heap allocation failed" << std::endl;
+		return (1);
+	}
 	heap_zombie->announce();
 	delete heap_zombie;
 	return (0);

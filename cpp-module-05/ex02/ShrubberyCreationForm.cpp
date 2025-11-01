@@ -51,12 +51,16 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("Shrubb
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm(other)
 {
-	(void) other;
+	target = other.target;
 }
 
 ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other)
 {
-	(void)other;
+	if (this != &other)
+	{
+		AForm::operator=(other);
+		target = other.target;
+	}
 	return (*this);
 }
 
@@ -70,6 +74,7 @@ void	ShrubberyCreationForm::action(void) const
 	if (!file.is_open())
 		throw std::ios_base::failure("ERROR: File cannot be opened");
 	file << asciiTree();
+	file.close();
 }
 
 void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const

@@ -12,7 +12,7 @@
 
 #include "Cat.hpp"
 
-Cat::Cat(void)
+Cat::Cat(void) : Animal()
 {
 	std::cout << "Default constructor of Cat is called" << std::endl;
 	type = "Cat";
@@ -34,8 +34,8 @@ Cat&	Cat::operator=(const Cat &other)
 
 Cat::~Cat(void)
 {
-	std::cout << "destructor of Cat is called" << std::endl;
 	delete brain;
+	std::cout << "destructor of Cat is called" << std::endl;
 }
 
 void	Cat::makeSound(void) const

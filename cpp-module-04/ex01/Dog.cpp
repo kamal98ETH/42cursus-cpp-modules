@@ -12,7 +12,7 @@
 
 #include "Dog.hpp"
 
-Dog::Dog(void)
+Dog::Dog(void) : Animal()
 {
 	std::cout << "Default constructor of Dog is called" << std::endl;
 	type = "Dog";
@@ -34,8 +34,8 @@ Dog&	Dog::operator=(const Dog &other)
 
 Dog::~Dog(void)
 {
-	std::cout << "destructor of Dog is called" << std::endl;
 	delete brain;
+	std::cout << "destructor of Dog is called" << std::endl;
 }
 
 void	Dog::makeSound(void) const

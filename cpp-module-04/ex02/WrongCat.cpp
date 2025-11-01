@@ -12,7 +12,7 @@
 
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat(void)
+WrongCat::WrongCat(void) : WrongAnimal()
 {
 	std::cout << "Default constructor of WrongCat is called" << std::endl;
 	type = "WrongCat";

@@ -16,10 +16,10 @@ DiamondTrap::DiamondTrap(void)
 {
 	std::cout << "Default constructor of DiamondTrap is called" << std::endl;
 	_name = "random";
-	ClapTrap::_name = DiamondTrap::_name + "_clap_name";
-	_hitPts = FragTrap::_hitPts;
-	_energyPts = ScavTrap::_energyPts;
-	_attackDmg = FragTrap::_attackDmg;
+	ClapTrap::_name = "random_clap_name";
+	_hitPts = 100;
+	_energyPts = 50;
+	_attackDmg = 30;
 }
 
 DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name), ScavTrap(name), FragTrap(name)
@@ -27,21 +27,25 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name), ScavTrap(name), Fra
 	std::cout << "Secondary constructor of DiamondTrap is called" << std::endl;
 	_name = name;
 	ClapTrap::_name = name + "_clap_name";
-	_hitPts = FragTrap::_hitPts;
-	_energyPts = ScavTrap::_energyPts;
-	_attackDmg = FragTrap::_attackDmg;
+	_hitPts = 100;
+	_energyPts = 50;
+	_attackDmg = 30;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap& other) : ClapTrap(other), ScavTrap(other), FragTrap(other)
 {
 	std::cout << "Copy constructor of DiamondTrap is called" << std::endl;
+	_name = other._name;
 }
 
 DiamondTrap&	DiamondTrap::operator=(const DiamondTrap& other)
 {
 	std::cout << "Copy assignment operator of DiamondTrap is called" << std::endl;
 	if (this != &other)
+	{
 		ClapTrap::operator=(other);
+		_name = other._name;
+	}
 	return (*this);
 }
 

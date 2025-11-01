@@ -73,9 +73,7 @@ t_type	ScalarConverter::get_type(const std::string& literal)
 
 void	ScalarConverter::handle_char(const std::string& literal, char &c, int &i, float &f, double &d)
 {
-	// convert it from string to its actual type
 	c = static_cast<char>(literal[0]);
-	// then convert it explicitly to the three other data types
 	i = static_cast<int>(c);
 	f = static_cast<float>(c);
 	d = static_cast<double>(c);
@@ -83,27 +81,21 @@ void	ScalarConverter::handle_char(const std::string& literal, char &c, int &i, f
 
 void	ScalarConverter::handle_int(const std::string& literal, char &c, int &i, float &f, double &d)
 {
-	// convert it from string to its actual type
 	i = std::atoi(literal.c_str());
-	// then convert it explicitly to the three other data types
 	c = static_cast<char>(i);
 	f = static_cast<float>(i);
 	d = static_cast<double>(i);
 }
 void	ScalarConverter::handle_float(const std::string& literal, char &c, int &i, float &f, double &d)
 {
-	// convert it from string to its actual type
 	f = std::atof(literal.c_str());
-	// then convert it explicitly to the three other data types
 	c = static_cast<char>(f);
 	i = static_cast<int>(f);
 	d = static_cast<double>(f);
 }
 void	ScalarConverter::handle_double(const std::string& literal, char &c, int &i, float &f, double &d)
 {
-	// convert it from string to its actual type
 	d = std::atof(literal.c_str());
-	// then convert it explicitly to the three other data types
 	c = static_cast<char>(d);
 	i = static_cast<int>(d);
 	f = static_cast<float>(d);
@@ -111,7 +103,6 @@ void	ScalarConverter::handle_double(const std::string& literal, char &c, int &i,
 
 void	ScalarConverter::convert(const std::string& literal)
 {
-	// You have to first detect the type of the literal passed as parameter
 	t_type	t = get_type(literal);
 
 	char	c;
@@ -137,7 +128,6 @@ void	ScalarConverter::convert(const std::string& literal)
 			break;
 	}
 
-	// Lastly, display the results as shown below.
 	std::cout << "char: ";
 	if (d > 31.0 && d < 127.0)
 		std::cout << "'" << c << "'" << std::endl;

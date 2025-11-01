@@ -12,7 +12,7 @@
 
 #include "Cat.hpp"
 
-Cat::Cat(void)
+Cat::Cat(void) : Animal()
 {
 	std::cout << "Default constructor of Cat is called" << std::endl;
 	type = "Cat";

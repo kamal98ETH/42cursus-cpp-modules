@@ -18,8 +18,8 @@
 class Point
 {
 private:
-	Fixed	_x;
-	Fixed	_y;
+	const Fixed	x;
+	const Fixed	y;
 public:
 	Point(void);
 	Point(const float X, const float Y);

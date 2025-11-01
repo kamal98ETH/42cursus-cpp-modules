@@ -26,12 +26,8 @@ AForm::AForm(const AForm& other) : _name(other._name), _signed(other._signed), _
 
 AForm&	AForm::operator=(const AForm& other)
 {
-	// if (this != &other)
-	// {
-	// 	this->~AForm();
-	// 	new (this) AForm(other);
-	// }
-	(void)other;
+	if (this != &other)
+		_signed = other._signed;
 	return (*this);
 }
 
